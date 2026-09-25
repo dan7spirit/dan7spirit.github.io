@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniel Sánchez | Senior Software Engineer & AI Solutions Architect</title>
+  <meta name="description" content="Portfolio of Daniel Sánchez - Senior Software Engineer & AI/Automation Specialist. GCP Professional Cloud Architect, AWS Solutions Architect, LangGraph Agentic AI, Spring Boot, Angular, and Enterprise Cloud Solutions.">
+  <meta name="keywords" content="Daniel Sanchez, Software Engineer, AI Specialist, LangGraph, GCP Cloud Architect, AWS Solutions Architect, Equifax, Python, Spring Boot, Angular">
+  <meta name="author" content="Daniel Sánchez">
+  <meta name="theme-color" content="#070b14">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Daniel Sánchez | Senior Software Engineer & AI Solutions Architect">
+  <meta property="og:description" content="Software Engineer with 5+ years experience architecting enterprise agentic AI systems, scalable multi-cloud microservices, and high-throughput data platforms.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              cyan: '#06b6d4',
+              sky: '#38bdf8',
+              indigo: '#6366f1',
+              purple: '#8b5cf6',
+              emerald: '#10b981',
+              dark: '#070b14',
+              card: '#0f172a'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'Outfit', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#070b14] text-slate-100 antialiased selection:bg-cyan-500/30 selection:text-cyan-200 relative min-h-screen">
+
+  <!-- Dynamic Particle Canvas Background -->
+  <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Ambient Glowing Radial Lights -->
+  <div class="radial-glow-cyan top-0 left-1/4"></div>
+  <div class="radial-glow-purple top-1/3 right-10"></div>
+  <div class="radial-glow-cyan bottom-10 left-10"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Top Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-5 bg-[#070b14]/70 backdrop-blur-xl border-b border-slate-800/60" id="main-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-purple-600 p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-lg shadow-cyan-500/20">
+          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+            <span class="font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 text-sm tracking-wider">DS</span>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-display font-bold text-slate-100 text-base tracking-tight group-hover:text-cyan-400 transition-colors">Daniel Sánchez</span>
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 font-mono tracking-tight">Software Engineer · AI Specialist</p>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#about" class="nav-link hover:text-cyan-400 transition-colors">About</a>
+        <a href="#impact" class="nav-link hover:text-cyan-400 transition-colors">Impact</a>
+        <a href="#agent-demo" class="nav-link hover:text-cyan-400 transition-colors flex items-center gap-1.5 text-cyan-300">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+          AI Visualizer
+        </a>
+        <a href="#projects" class="nav-link hover:text-cyan-400 transition-colors">Projects</a>
+        <a href="#experience" class="nav-link hover:text-cyan-400 transition-colors">Experience</a>
+        <a href="#certifications" class="nav-link hover:text-cyan-400 transition-colors">Certifications</a>
+        <a href="#skills" class="nav-link hover:text-cyan-400 transition-colors">Skills</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="hidden sm:flex items-center gap-3">
+        <!-- Interactive Recruiter AI Button -->
+        <button class="open-ai-chat-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-cyan-500/15 via-blue-500/15 to-purple-500/15 text-cyan-300 border border-cyan-500/30 hover:border-cyan-400 hover:bg-cyan-500/25 transition-all duration-300 flex items-center gap-2 shadow-sm">
+          <svg class="w-3.5 h-3.5 text-cyan-400 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          Ask Recruiter AI
+        </button>
+
+        <!-- View Resume Modal -->
+        <button class="open-resume-btn px-3.5 py-2 rounded-xl text-xs font-medium bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 border border-slate-700/80 hover:border-slate-600 transition-all flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Resume
+        </button>
+
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="p-2 rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-slate-800 transition-colors" title="Toggle Theme">
+          <svg class="w-4 h-4 moon-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+          <svg class="w-4 h-4 sun-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-300 hover:bg-slate-800/70" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-3 pb-6 bg-slate-950/95 border-b border-slate-800 backdrop-blur-xl">
+      <div class="flex flex-col gap-3 font-medium text-slate-300 text-sm">
+        <a href="#about" class="px-3 py-2 rounded-lg hover:bg-slate-800/50 hover:text-cyan-400">About</a>
+        <a href="#impact" class="px-3 py-2 rounded-lg hover:bg-slate-800/50 hover:text-cyan-400">Impact & Metrics</a>
+        <a href="#agent-demo" class="px-3 py-2 rounded-lg hover:bg-slate-800/50 hover:text-cyan-400">Interactive AI Visualizer</a>
+        <a href="#projects" class="px-3 py-2 rounded-lg hover:bg-slate-800/50 hover:text-cyan-400">Featured Projects</a>
+        <a href="#experience" class="px-3 py-2 rounded-lg hover:bg-slate-800/50 hover:text-cyan-400">Experience Journey</a>
+        <a href="#certifications" class="px-3 py-2 rounded-lg hover:bg-slate-800/50 hover:text-cyan-400">Certifications (GCP & AWS)</a>
+        <a href="#skills" class="px-3 py-2 rounded-lg hover:bg-slate-800/50 hover:text-cyan-400">Skills Matrix</a>
+        <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
+          <button class="open-ai-chat-btn w-full py-2.5 rounded-xl text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 text-center">
+            Ask Recruiter AI
+          </button>
+          <button class="open-resume-btn w-full py-2.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-200 border border-slate-700 text-center">
+            View Resume
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="relative z-10 pt-28">
+
+    <!-- ====================================================================
+         HERO SECTION
+         ==================================================================== -->
+    <section id="hero" class="relative pt-8 pb-20 md:pt-16 md:pb-28 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Left Column: Copy & Value Proposition -->
+          <div class="lg:col-span-7 flex flex-col gap-6 text-left">
+            
+            <!-- Availability Badge -->
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-xs font-medium text-slate-300 w-fit backdrop-blur-md shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Available for <strong class="text-white font-semibold">Senior & Lead Engineering Roles</strong> · Remote / Hybrid</span>
+            </div>
+
+            <!-- Main Heading -->
+            <div>
+              <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.12]">
+                Architecting <span class="text-gradient-cyan-purple">Agentic AI</span> & Enterprise Cloud Systems.
+              </h1>
+              <p class="mt-4 text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
+                I am <strong class="text-white font-semibold">Daniel Sánchez</strong>, a Software Engineer & AI Specialist with <span class="text-cyan-300 font-semibold">5+ years at Equifax</span>. Dual-cloud certified (<strong class="text-slate-100">GCP Professional Cloud Architect</strong> & <strong class="text-slate-100">AWS Solutions Architect</strong>). Passionate about turning complex operational bottlenecks into autonomous, high-throughput software solutions.
+              </p>
+            </div>
+
+            <!-- Key Proof Points Strip -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-sm">
+                <div class="text-xs text-slate-400">Agentic Automation</div>
+                <div class="text-sm font-semibold text-cyan-300 font-mono mt-0.5">LangGraph & LLMs</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-sm">
+                <div class="text-xs text-slate-400">Dual Cloud Cert</div>
+                <div class="text-sm font-semibold text-purple-300 font-mono mt-0.5">GCP + AWS Certified</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-sm col-span-2 sm:col-span-1">
+                <div class="text-xs text-slate-400">Proven ROI</div>
+                <div class="text-sm font-semibold text-emerald-400 font-mono mt-0.5">640 hrs/mo Saved</div>
+              </div>
+            </div>
+
+            <!-- Primary CTAs -->
+            <div class="flex flex-wrap items-center gap-3.5 pt-2">
+              <a href="#projects" class="px-6 py-3 rounded-xl text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/25 flex items-center gap-2">
+                <span>View Engineering Projects</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
+              <button class="open-resume-btn px-5 py-3 rounded-xl text-sm font-medium text-slate-200 bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 hover:border-cyan-500/50 transition-all flex items-center gap-2 shadow-sm">
+                <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span>Interactive Resume</span>
+              </button>
+
+              <a href="assets/Daniel_Sanchez_Resume.docx" download="Daniel_Sanchez_Resume.docx" class="px-4 py-3 rounded-xl text-sm font-medium text-slate-300 bg-slate-900/50 hover:bg-slate-800/80 border border-slate-800 transition-all flex items-center gap-1.5" title="Download Word Document">
+                <svg class="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/>
+                </svg>
+                <span>.DOCX</span>
+              </a>
+            </div>
+
+            <!-- Direct Contact & Social Quick Bar -->
+            <div class="flex flex-wrap items-center gap-4 pt-4 border-t border-slate-800/60 text-xs text-slate-400">
+              <button class="copy-btn hover:text-cyan-300 transition-colors flex items-center gap-1.5" data-copy="sanchez04d@outlook.com" title="Click to copy email">
+                <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span>sanchez04d@outlook.com</span>
+              </button>
+
+              <span class="text-slate-700 hidden sm:inline">•</span>
+
+              <a href="https://linkedin.com/in/dan7spirit" target="_blank" rel="noopener" class="hover:text-blue-400 transition-colors flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <span>linkedin.com/in/dan7spirit</span>
+              </a>
+
+              <span class="text-slate-700 hidden sm:inline">•</span>
+
+              <a href="https://github.com/dan7spirit" target="_blank" rel="noopener" class="hover:text-slate-200 transition-colors flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-slate-300" fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+                <span>github.com/dan7spirit</span>
+              </a>
+
+              <span class="text-slate-700 hidden sm:inline">•</span>
+
+              <span class="flex items-center gap-1">
+                <svg class="w-3.5 h-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span>San José, Costa Rica</span>
+              </span>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Tech Hologram Card -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-md">
+              
+              <!-- Ambient Glow behind card -->
+              <div class="absolute -inset-1.5 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 rounded-3xl blur-xl opacity-30 animate-pulse"></div>
+
+              <!-- Main Card Container -->
+              <div class="relative rounded-2xl bg-slate-900/90 border border-slate-700/80 p-6 backdrop-blur-xl shadow-2xl">
+                
+                <!-- Card Header -->
+                <div class="flex items-center justify-between pb-5 border-b border-slate-800">
+                  <div class="flex items-center gap-3">
+                    <img src="assets/avatar-illustration.svg" alt="Daniel Sanchez Avatar" class="w-14 h-14 rounded-xl border border-cyan-500/40 shadow-md object-cover bg-slate-950">
+                    <div>
+                      <h3 class="font-display font-bold text-white text-base">Daniel Sánchez</h3>
+                      <p class="text-xs text-cyan-400 font-mono">Senior SWE & AI Architect</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <span class="px-2 py-1 rounded-md text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                      5+ YRS EXP
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Verified Credentials Badge Area -->
+                <div class="mt-4 flex flex-col gap-2.5">
+                  <div class="p-3 rounded-xl bg-slate-950/70 border border-cyan-500/30 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-blue-300">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="text-xs font-semibold text-white">GCP Professional Cloud Architect</div>
+                        <div class="text-[10px] text-slate-400 font-mono">Series #98085 · Valid to 2027</div>
+                      </div>
+                    </div>
+                    <a href="assets/Google_Cloud_Architect_Certificate.pdf" target="_blank" class="text-[11px] font-medium text-cyan-400 hover:text-cyan-300 underline font-mono">Verify</a>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-slate-950/70 border border-purple-500/30 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-lg bg-purple-500/20 border border-purple-400/40 flex items-center justify-center text-purple-300">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="text-xs font-semibold text-white">AWS Solutions Architect – Assoc</div>
+                        <div class="text-[10px] text-slate-400 font-mono">Amazon Web Services</div>
+                      </div>
+                    </div>
+                    <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">Certified</span>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-slate-950/70 border border-emerald-500/30 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-300">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="text-xs font-semibold text-white">ISC2 Cybersecurity Certified (CC)</div>
+                        <div class="text-[10px] text-slate-400 font-mono">Infosec, Zero Trust, OAuth 2.0</div>
+                      </div>
+                    </div>
+                    <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">Certified</span>
+                  </div>
+                </div>
+
+                <!-- Interactive Recruiter Quick Prompt trigger -->
+                <div class="mt-5 pt-4 border-t border-slate-800">
+                  <button class="open-ai-chat-btn w-full py-2.5 px-4 rounded-xl text-xs font-semibold bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 transition-all flex items-center justify-center gap-2 group">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 group-hover:scale-125 transition-transform"></span>
+                    <span>Test Recruiter AI Assistant</span>
+                    <span class="text-slate-500 font-mono text-[10px]">(Instant Response)</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         IMPACT METRICS STRIP (The 6-Second Recruiter Proof)
+         ==================================================================== -->
+    <section id="impact" class="relative py-12 border-y border-slate-800/80 bg-slate-950/60 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <h2 class="text-xs uppercase font-mono tracking-widest text-cyan-400">Quantifiable Business Impact</h2>
+          <p class="font-display text-2xl font-bold text-white mt-1">Delivering High-Velocity Engineering Results</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          
+          <!-- Metric 1 -->
+          <div class="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover-card-lift">
+            <div class="font-display font-extrabold text-4xl sm:text-5xl text-cyan-400 metric-number" data-target="640" data-suffix="h">0h</div>
+            <div class="text-sm font-semibold text-white mt-2">Saved Per Month</div>
+            <div class="text-xs text-slate-400 mt-1 leading-snug">Through LangGraph autonomous agent orchestration & test automation</div>
+          </div>
+
+          <!-- Metric 2 -->
+          <div class="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover-card-lift">
+            <div class="font-display font-extrabold text-4xl sm:text-5xl text-purple-400 metric-number" data-target="3" data-suffix="x">0x</div>
+            <div class="text-sm font-semibold text-white mt-2">Faster Regressions</div>
+            <div class="text-xs text-slate-400 mt-1 leading-snug">Regression cycle accelerated from 3 weeks down to 1 single week</div>
+          </div>
+
+          <!-- Metric 3 -->
+          <div class="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover-card-lift">
+            <div class="font-display font-extrabold text-4xl sm:text-5xl text-emerald-400 metric-number" data-target="5" data-suffix="+">0+</div>
+            <div class="text-sm font-semibold text-white mt-2">Years Enterprise Experience</div>
+            <div class="text-xs text-slate-400 mt-1 leading-snug">Architecting core FinTech automation and cloud data systems at Equifax</div>
+          </div>
+
+          <!-- Metric 4 -->
+          <div class="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover-card-lift">
+            <div class="font-display font-extrabold text-4xl sm:text-5xl text-blue-400 metric-number" data-target="2" data-prefix="" data-suffix=" Teams">0</div>
+            <div class="text-sm font-semibold text-white mt-2">Led as Tech Lead</div>
+            <div class="text-xs text-slate-400 mt-1 leading-snug">Offshore engineering teams coached in solution architecture & CI/CD</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         INTERACTIVE LANGGRAPH AGENT WORKFLOW VISUALIZER (Live Architecture Demo)
+         ==================================================================== -->
+    <section id="agent-demo" class="py-20 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 mb-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+              Live Interactive Architecture Demo
+            </div>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+              LangGraph Multi-Agent Orchestration Engine
+            </h2>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+              An interactive visual simulation of the agent-orchestrated test automation platform Daniel engineered at Equifax, saving 640 engineering man-hours each month.
+            </p>
+          </div>
+
+          <!-- Simulation Controls -->
+          <div class="flex items-center gap-2.5">
+            <button id="run-sim-btn" class="px-4 py-2.5 rounded-xl text-xs font-semibold bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 transition-all flex items-center gap-2 shadow-sm">
+              <span>▶ Run Simulation</span>
+            </button>
+            <button id="step-sim-btn" class="px-3.5 py-2.5 rounded-xl text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all">
+              Step Next
+            </button>
+            <button id="reset-sim-btn" class="px-3.5 py-2.5 rounded-xl text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 border border-slate-700 transition-all">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Visualizer Dashboard Card -->
+        <div class="rounded-2xl bg-slate-900/80 border border-slate-700/80 p-6 md:p-8 backdrop-blur-xl shadow-2xl">
+          
+          <!-- Graph Nodes Horizontal Pipeline -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 relative mb-8">
+            
+            <!-- Node 1: Ingestion -->
+            <div id="node-trigger" class="vis-node agent-node p-4 rounded-xl bg-slate-950/80 border border-slate-800 flex flex-col gap-2 relative transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">Node 01</span>
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              </div>
+              <h4 class="font-display font-bold text-sm text-white">CI Ingestion Trigger</h4>
+              <p class="text-[11px] text-slate-400">Webhooks ingest test suite specs into LangGraph state</p>
+            </div>
+
+            <!-- Node 2: Supervisor -->
+            <div id="node-supervisor" class="vis-node agent-node p-4 rounded-xl bg-slate-950/80 border border-slate-800 flex flex-col gap-2 relative transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-900/40 text-blue-300">Node 02</span>
+                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              </div>
+              <h4 class="font-display font-bold text-sm text-white">Supervisor Agent</h4>
+              <p class="text-[11px] text-slate-400">Plans sub-graphs & clusters tests across parallel nodes</p>
+            </div>
+
+            <!-- Node 3: Workers -->
+            <div id="node-workers" class="vis-node agent-node p-4 rounded-xl bg-slate-950/80 border border-slate-800 flex flex-col gap-2 relative transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-900/40 text-purple-300">Node 03</span>
+                <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+              </div>
+              <h4 class="font-display font-bold text-sm text-white">Worker Fleet (Selenium)</h4>
+              <p class="text-[11px] text-slate-400">Parallel containerized browser test runners</p>
+            </div>
+
+            <!-- Node 4: Reflection -->
+            <div id="node-healing" class="vis-node agent-node p-4 rounded-xl bg-slate-950/80 border border-slate-800 flex flex-col gap-2 relative transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-900/40 text-amber-300">Node 04</span>
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              </div>
+              <h4 class="font-display font-bold text-sm text-white">LLM Self-Healing Node</h4>
+              <p class="text-[11px] text-slate-400">Reflection cycle updates broken DOM selectors dynamically</p>
+            </div>
+
+            <!-- Node 5: Telemetry -->
+            <div id="node-telemetry" class="vis-node agent-node p-4 rounded-xl bg-slate-950/80 border border-slate-800 flex flex-col gap-2 relative transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-900/40 text-emerald-300">Node 05</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              </div>
+              <h4 class="font-display font-bold text-sm text-white">BigQuery & Telemetry</h4>
+              <p class="text-[11px] text-slate-400">Pushes execution traces & notifies Slack channels</p>
+            </div>
+
+          </div>
+
+          <!-- Bottom: Live Terminal Stream & State Inspector Side-by-Side -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Terminal Log Stream -->
+            <div class="lg:col-span-7 flex flex-col rounded-xl bg-slate-950 border border-slate-800 overflow-hidden shadow-inner">
+              <div class="flex items-center justify-between px-4 py-2.5 bg-slate-900 border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                  <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                  <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                  <span class="text-xs font-mono text-slate-400 ml-2">agent_executor_stream.log</span>
+                </div>
+                <span class="text-[11px] font-mono text-cyan-400">STATUS: ACTIVE</span>
+              </div>
+              <div id="agent-terminal-logs" class="p-4 h-56 overflow-y-auto font-mono text-xs leading-relaxed space-y-1">
+                <div class="text-slate-500">// LangGraph Agent Engine v0.3.1 initialized.</div>
+                <div class="text-slate-500">// Ready. Click "▶ Run Simulation" above to view multi-agent state transition.</div>
+              </div>
+            </div>
+
+            <!-- Graph State Inspector -->
+            <div class="lg:col-span-5 flex flex-col rounded-xl bg-slate-950 border border-slate-800 overflow-hidden shadow-inner">
+              <div class="flex items-center justify-between px-4 py-2.5 bg-slate-900 border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                  <svg class="w-3.5 h-3.5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                  <span class="text-xs font-mono text-slate-300">LangGraph TypedDict State</span>
+                </div>
+                <span class="text-[11px] font-mono text-purple-400">JSON Payload</span>
+              </div>
+              <div class="p-4 h-56 overflow-y-auto">
+                <pre id="agent-state-payload" class="font-mono text-[11px] text-cyan-300/90 whitespace-pre">{
+  "graph_state": "IDLE",
+  "awaiting_trigger": true,
+  "nodes_registered": [
+    "Supervisor",
+    "WorkerFleet",
+    "LLMReflection",
+    "BigQuerySink"
+  ]
+}</pre>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FEATURED PROJECTS & ARCHITECTURAL CASE STUDIES
+         ==================================================================== -->
+    <section id="projects" class="py-20 relative border-t border-slate-800/80 bg-slate-950/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <span class="text-xs uppercase font-mono tracking-widest text-cyan-400">Production Case Studies</span>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight mt-1">
+              Featured Engineering Projects
+            </h2>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+              Architectural blueprints, core implementations, and quantifiable business outcomes across Agentic AI, Cloud Platforms, and Full-Stack Systems.
+            </p>
+          </div>
+
+          <!-- Project Filter Tabs -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 transition-colors" data-filter="all">
+              All Systems
+            </button>
+            <button class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800/50 text-slate-400 border border-slate-700/50 hover:text-slate-200 transition-colors" data-filter="ai">
+              Agentic AI & LLMs
+            </button>
+            <button class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800/50 text-slate-400 border border-slate-700/50 hover:text-slate-200 transition-colors" data-filter="cloud">
+              Cloud Architecture
+            </button>
+            <button class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800/50 text-slate-400 border border-slate-700/50 hover:text-slate-200 transition-colors" data-filter="fullstack">
+              Full-Stack Microservices
+            </button>
+            <button class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800/50 text-slate-400 border border-slate-700/50 hover:text-slate-200 transition-colors" data-filter="data">
+              ETL & Data Integrity
+            </button>
+          </div>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- Card 1: LangGraph Agent Platform -->
+          <div class="project-card flex flex-col justify-between p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover-card-lift" data-category="ai cloud">
+            <div>
+              <div class="flex items-center justify-between text-xs mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-mono font-medium">Equifax · Agentic AI</span>
+                <span class="text-emerald-400 font-semibold font-mono text-[11px]">640 hrs/mo saved</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white">LangGraph Autonomous E2E Automation Platform</h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                Migrated a legacy E2E test framework into an autonomous agent-orchestrated architecture. Features dynamic planning, parallel containerized runners, and LLM reflection loops for self-healing DOM selectors.
+              </p>
+              
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">LangGraph</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Python 3</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Selenium</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">LLM Reflection</span>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between">
+              <span class="text-xs text-slate-400 font-mono">Regression: 3 wks → 1 wk</span>
+              <button class="open-case-study-btn text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 group" data-project="langgraph-agent">
+                <span>View Architecture</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: Cloud-Native Analytics Suite -->
+          <div class="project-card flex flex-col justify-between p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover-card-lift" data-category="cloud fullstack data">
+            <div>
+              <div class="flex items-center justify-between text-xs mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 border border-purple-500/30 font-mono font-medium">Equifax · GCP Cloud</span>
+                <span class="text-purple-300 font-semibold font-mono text-[11px]">Serverless Suite</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white">Cloud-Native Workforce Analytics & Looker Suite</h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                Engineered an event-driven serverless workforce analytics solution delivering actionable organizational insights to global executives using GCP Cloud Functions, Cloud Scheduler, and Looker dashboards.
+              </p>
+              
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">GCP Functions</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">BigQuery</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Vue.js</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Looker</span>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between">
+              <span class="text-xs text-slate-400 font-mono">100% Manual Effort Cut</span>
+              <button class="open-case-study-btn text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 group" data-project="gcp-analytics">
+                <span>View Architecture</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Full-Stack Process Automation Portal -->
+          <div class="project-card flex flex-col justify-between p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover-card-lift" data-category="fullstack">
+            <div>
+              <div class="flex items-center justify-between text-xs mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono font-medium">Equifax · Enterprise Portal</span>
+                <span class="text-emerald-400 font-semibold font-mono text-[11px]">40 hrs/mo saved</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white">Enterprise Automation Portal & Microservices</h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                Full-stack internal business operations application built with Angular 19 and Spring Boot RESTful microservices. Automated complex client workflows with OAuth security protocols and PostgreSQL persistence.
+              </p>
+              
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Angular 19</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Spring Boot</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Java 17+</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">OAuth / JWT</span>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between">
+              <span class="text-xs text-slate-400 font-mono">&lt; 200ms API Latency</span>
+              <button class="open-case-study-btn text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 group" data-project="fullstack-portal">
+                <span>View Architecture</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4: Multi-Engine Hybrid ETL Platform -->
+          <div class="project-card flex flex-col justify-between p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover-card-lift" data-category="data cloud">
+            <div>
+              <div class="flex items-center justify-between text-xs mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/30 font-mono font-medium">Equifax · Big Data</span>
+                <span class="text-blue-300 font-semibold font-mono text-[11px]">Zero Data Loss</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white">Hybrid ETL & Data Lake Validation Platform</h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                Architected cross-engine reconciliation framework integrating BigQuery (SQL/NoSQL hybrid), PostgreSQL, Oracle, and MSSQL. Validated schema integrity during petabyte-scale data lake migrations.
+              </p>
+              
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">BigQuery</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">PostgreSQL</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Oracle / PL-SQL</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">MSSQL</span>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between">
+              <span class="text-xs text-slate-400 font-mono">Multi-Engine Certified</span>
+              <button class="open-case-study-btn text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 group" data-project="etl-lake">
+                <span>View Architecture</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 5: Autonomous Logistics Invoice Reconciliation -->
+          <div class="project-card flex flex-col justify-between p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover-card-lift" data-category="ai cloud">
+            <div>
+              <div class="flex items-center justify-between text-xs mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/30 font-mono font-medium">Case Study · OCR & AI</span>
+                <span class="text-amber-300 font-semibold font-mono text-[11px]">5,200 Invoices/Mo</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white">Autonomous Logistics Invoice Reconciliation Engine</h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                Architected an end-to-end event-driven reconciliation system featuring Dispatcher-Worker queue models, Document AI OCR ingestion, 3-way PO verification, and ElasticSearch telemetry.
+              </p>
+              
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Document AI</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Dead Letter Queues</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">ElasticSearch</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Python</span>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between">
+              <span class="text-xs text-slate-400 font-mono">90% Touchpoint Reduction</span>
+              <button class="open-case-study-btn text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 group" data-project="logistics-reconciliation">
+                <span>View Architecture</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 6: AI Tool Champion & CI/CD Security -->
+          <div class="project-card flex flex-col justify-between p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover-card-lift" data-category="cloud fullstack">
+            <div>
+              <div class="flex items-center justify-between text-xs mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 font-mono font-medium">Equifax · DevOps & Security</span>
+                <span class="text-indigo-300 font-semibold font-mono text-[11px]">Security-First CI/CD</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white">Secure CI/CD & AI-Assisted Velocity Pipelines</h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                Architected high-velocity deployment pipelines using GitHub Actions and Jenkins. Integrated OAuth security gates and pioneered team-wide GitHub Copilot adoption, accelerating delivery velocity across teams.
+              </p>
+              
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">GitHub Actions</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Jenkins</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Docker</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-300">Copilot Champion</span>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between">
+              <span class="text-xs text-slate-400 font-mono">Zero Security Breaches</span>
+              <button class="open-case-study-btn text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 group" data-project="fullstack-portal">
+                <span>View Details</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         INTERACTIVE "ASK DANIEL'S RECRUITER AI" SECTION (Recruiter Playground)
+         ==================================================================== -->
+    <section id="interactive-recruiter" class="py-20 relative">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20 mb-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
+            Hiring Manager & Recruiter Tool
+          </div>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+            Ask Daniel's Recruiter AI Assistant
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-2">
+            Have questions about Daniel's technical depth, certifications, or leadership experience? Click any prompt chip below or type custom questions to evaluate candidate fit instantly.
+          </p>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="rounded-2xl bg-slate-900/90 border border-slate-700/80 overflow-hidden shadow-2xl backdrop-blur-xl">
+          
+          <!-- Chat Header -->
+          <div class="flex items-center justify-between px-6 py-4 bg-slate-950/80 border-b border-slate-800">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold shadow-md shadow-cyan-500/20">
+                AI
+              </div>
+              <div>
+                <h4 class="font-display font-bold text-white text-sm">DanBot · AI Recruiter Agent</h4>
+                <p class="text-[11px] text-emerald-400 font-mono">Trained on Daniel's Experience & Architecture</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300 border border-slate-700">
+                v2.4 Active
+              </span>
+            </div>
+          </div>
+
+          <!-- Suggested Prompt Chips -->
+          <div class="p-4 bg-slate-950/40 border-b border-slate-800/80 flex flex-wrap gap-2">
+            <button class="chat-chip-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800/70 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-300 border border-slate-700/60 hover:border-cyan-500/40 transition-colors" data-query="Tell me about his LangGraph automation project">
+              🤖 LangGraph AI Automation
+            </button>
+            <button class="chat-chip-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800/70 hover:bg-purple-500/20 text-slate-300 hover:text-purple-300 border border-slate-700/60 hover:border-purple-500/40 transition-colors" data-query="What are his cloud certifications?">
+              ☁️ GCP & AWS Certifications
+            </button>
+            <button class="chat-chip-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800/70 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 border border-slate-700/60 hover:border-emerald-500/40 transition-colors" data-query="How did he save 640 hours/month at Equifax?">
+              ⚡ 640 hrs/month Saved
+            </button>
+            <button class="chat-chip-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800/70 hover:bg-blue-500/20 text-slate-300 hover:text-blue-300 border border-slate-700/60 hover:border-blue-500/40 transition-colors" data-query="What backend and database technologies does he master?">
+              💻 Backend & Database Stack
+            </button>
+            <button class="chat-chip-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800/70 hover:bg-amber-500/20 text-slate-300 hover:text-amber-300 border border-slate-700/60 hover:border-amber-500/40 transition-colors" data-query="What are his leadership and mentoring experiences?">
+              👥 Tech Lead & Mentorship
+            </button>
+          </div>
+
+          <!-- Chat Messages Area -->
+          <div id="chat-messages" class="p-6 h-80 overflow-y-auto space-y-4 bg-slate-900/40">
+            <!-- Welcome message from bot -->
+            <div class="flex gap-3 justify-start animate-fade-in">
+              <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold shrink-0 shadow-lg shadow-cyan-500/20">
+                AI
+              </div>
+              <div class="max-w-[85%] rounded-2xl rounded-tl-sm px-4 py-3 bg-slate-800/90 border border-slate-700/60 text-slate-200 text-sm leading-relaxed shadow-md">
+                Hello! I am Daniel's AI Recruiter Assistant. I can share technical details about his <strong>LangGraph agentic systems</strong>, <strong>dual-cloud credentials</strong> (GCP Professional Cloud Architect & AWS), or his <strong>leadership impact</strong> at Equifax. How can I help you assess his profile today?
+              </div>
+            </div>
+          </div>
+
+          <!-- Input Bar -->
+          <div class="p-4 bg-slate-950/80 border-t border-slate-800 flex items-center gap-3">
+            <input type="text" id="chat-input" placeholder="Ask anything about Daniel's technical background, impact, or availability..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 transition-colors">
+            <button id="chat-send-btn" class="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-xs transition-all shadow-md shrink-0 flex items-center gap-1.5">
+              <span>Send</span>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PROFESSIONAL EXPERIENCE & EDUCATION TIMELINE
+         ==================================================================== -->
+    <section id="experience" class="py-20 relative border-t border-slate-800/80">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs uppercase font-mono tracking-widest text-cyan-400">Career Trajectory</span>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight mt-1">
+            Professional Experience & Leadership
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-2">
+            Proven track record delivering scalable enterprise software, leading cross-functional teams, and mentoring engineers.
+          </p>
+        </div>
+
+        <div class="relative border-l border-slate-800 ml-4 sm:ml-8 space-y-12">
+
+          <!-- Experience 1: Equifax Senior / Lead Role -->
+          <div class="relative pl-6 sm:pl-10">
+            <!-- Timeline dot -->
+            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyan-400 border-4 border-slate-950 shadow-md shadow-cyan-500/50"></div>
+
+            <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover-card-lift">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-800">
+                <div>
+                  <h3 class="font-display font-bold text-xl text-white">Software Engineer · AI & Automation Specialist</h3>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="text-cyan-400 font-medium text-sm">Equifax</span>
+                    <span class="text-slate-600">•</span>
+                    <span class="text-slate-400 text-xs">San José, Costa Rica</span>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-cyan-950/60 text-cyan-300 border border-cyan-500/30">
+                    Feb 2020 – Present (5+ Yrs)
+                  </span>
+                </div>
+              </div>
+
+              <div class="mt-5 space-y-3.5 text-sm text-slate-300 leading-relaxed">
+                <div class="flex items-start gap-3">
+                  <span class="text-cyan-400 mt-1 font-mono text-xs">▹</span>
+                  <div>
+                    <strong class="text-white">AI-Driven Agentic Automation Platform:</strong> Architected an intelligent test orchestration platform using <span class="text-cyan-300 font-mono text-xs">LangGraph</span> and Python, migrating legacy E2E frameworks to an autonomous agent system—<strong>reducing regression cycles from 3 weeks to 1 week</strong> and saving <strong class="text-emerald-400">640 man-hours per month</strong>.
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-cyan-400 mt-1 font-mono text-xs">▹</span>
+                  <div>
+                    <strong class="text-white">Full-Stack Internal Enterprise Application:</strong> Built and delivered an internal UI operations portal using <span class="text-purple-300 font-mono text-xs">Angular 19</span> and <span class="text-purple-300 font-mono text-xs">Spring Boot</span> with RESTful APIs, automating mission-critical workflows and saving <strong>40 hours per month</strong>.
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-cyan-400 mt-1 font-mono text-xs">▹</span>
+                  <div>
+                    <strong class="text-white">Cross-Engine ETL & BigQuery Data Lake Validation:</strong> Designed an automated data validation platform integrating <span class="text-blue-300 font-mono text-xs">BigQuery (NoSQL/SQL hybrid)</span>, PostgreSQL, Oracle, and MSSQL data sources, ensuring complete data consistency across cloud data lake migrations.
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-cyan-400 mt-1 font-mono text-xs">▹</span>
+                  <div>
+                    <strong class="text-white">Serverless Cloud-Native Workforce Analytics:</strong> Developed an enterprise analytics engine using Python, GCP (Cloud Scheduler, Cloud Functions, BigQuery), Vue.js, and Looker—delivering actionable real-time analytics to global leadership.
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-cyan-400 mt-1 font-mono text-xs">▹</span>
+                  <div>
+                    <strong class="text-white">Secure CI/CD Architecture:</strong> Designed resilient pipelines with GitHub Actions and Jenkins, integrating zero-trust OAuth 2.0 protocols and automated test runners for zero-downtime production releases.
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-cyan-400 mt-1 font-mono text-xs">▹</span>
+                  <div>
+                    <strong class="text-white">Tech Leadership & Offshore Mentorship:</strong> Led offshore development squads across two major enterprise automation initiatives; conducted architecture reviews, established coding standards, and mentored junior engineers on software design patterns.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tech Pills -->
+              <div class="mt-6 pt-4 border-t border-slate-800/80 flex flex-wrap gap-2">
+                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-950 text-slate-300 border border-slate-800">Python 3</span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-950 text-slate-300 border border-slate-800">LangGraph</span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-950 text-slate-300 border border-slate-800">Spring Boot</span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-950 text-slate-300 border border-slate-800">Angular 19</span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-950 text-slate-300 border border-slate-800">GCP BigQuery</span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-950 text-slate-300 border border-slate-800">Docker</span>
+                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-950 text-slate-300 border border-slate-800">OAuth / JWT</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education: TEC -->
+          <div class="relative pl-6 sm:pl-10">
+            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-400 border-4 border-slate-950 shadow-md shadow-purple-500/50"></div>
+
+            <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover-card-lift">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-800">
+                <div>
+                  <h3 class="font-display font-bold text-lg text-white">Bachelor's Degree in Computer Science & Informatics</h3>
+                  <div class="text-purple-300 text-sm mt-0.5">Tecnológico de Costa Rica (TEC)</div>
+                </div>
+                <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-purple-950/60 text-purple-300 border border-purple-500/30 w-fit">
+                  2016 – 2020
+                </span>
+              </div>
+              <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+                Graduated from Costa Rica's highest-ranking engineering university. Comprehensive foundations in distributed systems, algorithm analysis, relational database architecture, software design patterns, and computer network security.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         OFFICIAL CERTIFICATIONS & ACCREDITATIONS
+         ==================================================================== -->
+    <section id="certifications" class="py-20 relative bg-slate-950/50 border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="text-xs uppercase font-mono tracking-widest text-cyan-400">Verified Credentials</span>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight mt-1">
+            Industry Certifications
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-2">
+            Rigorous cross-cloud and cybersecurity accreditations validating real-world architectural leadership.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- Cert 1: GCP Professional Cloud Architect -->
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-cyan-500/40 shadow-xl shadow-cyan-500/10 flex flex-col justify-between hover-card-lift relative overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-28 h-28 bg-cyan-500/10 rounded-full blur-xl pointer-events-none"></div>
+
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-300 mb-4">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z" />
+                </svg>
+              </div>
+
+              <div class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 mb-2">
+                GOOGLE CLOUD
+              </div>
+
+              <h3 class="font-display font-bold text-lg text-white">Professional Cloud Architect</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                Advanced certification validating end-to-end cloud architecture design, security compliance, scalability, multi-region failover, and serverless big data topologies.
+              </p>
+
+              <div class="mt-4 p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-[11px] font-mono text-slate-400 space-y-1">
+                <div>Series ID: <span class="text-white">98085</span></div>
+                <div>Issued: <span class="text-slate-200">Aug 22, 2024</span></div>
+                <div>Expires: <span class="text-cyan-300">Sep 01, 2027</span></div>
+              </div>
+            </div>
+
+            <div class="pt-5 mt-5 border-t border-slate-800">
+              <a href="assets/Google_Cloud_Architect_Certificate.pdf" target="_blank" class="w-full py-2.5 rounded-xl text-xs font-semibold bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 transition-all flex items-center justify-center gap-1.5">
+                <span>View Official Certificate (PDF)</span>
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cert 2: AWS Solutions Architect Associate -->
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-purple-500/40 shadow-xl shadow-purple-500/10 flex flex-col justify-between hover-card-lift relative overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-28 h-28 bg-purple-500/10 rounded-full blur-xl pointer-events-none"></div>
+
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-400/40 flex items-center justify-center text-purple-300 mb-4">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+
+              <div class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30 mb-2">
+                AMAZON WEB SERVICES
+              </div>
+
+              <h3 class="font-display font-bold text-lg text-white">AWS Certified Solutions Architect</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                Demonstrated mastery architecting resilient, high-performing, cost-optimized, and secure cloud infrastructures across AWS compute, networking, and storage stacks.
+              </p>
+
+              <div class="mt-4 p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-[11px] font-mono text-slate-400 space-y-1">
+                <div>Level: <span class="text-white">Associate Architect</span></div>
+                <div>Focus: <span class="text-slate-200">Resilience & VPCs</span></div>
+                <div>Status: <span class="text-emerald-400 font-semibold">Active & Certified</span></div>
+              </div>
+            </div>
+
+            <div class="pt-5 mt-5 border-t border-slate-800">
+              <div class="w-full py-2.5 rounded-xl text-xs font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/30 text-center font-mono">
+                ✓ Verified Credential
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 3: ISC2 Certified in Cybersecurity -->
+          <div class="p-6 rounded-2xl bg-slate-900/80 border border-emerald-500/40 shadow-xl shadow-emerald-500/10 flex flex-col justify-between hover-card-lift relative overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-28 h-28 bg-emerald-500/10 rounded-full blur-xl pointer-events-none"></div>
+
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-300 mb-4">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+
+              <div class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-2">
+                ISC2 CYBERSECURITY
+              </div>
+
+              <h3 class="font-display font-bold text-lg text-white">Certified in Cybersecurity (CC)</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                Foundational and operational information security, identity & access management (IAM), network security controls, and defense-in-depth principles applied across engineering pipelines.
+              </p>
+
+              <div class="mt-4 p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-[11px] font-mono text-slate-400 space-y-1">
+                <div>Accreditation: <span class="text-white">ISC2 (CC)</span></div>
+                <div>Focus: <span class="text-slate-200">Zero Trust & Pipeline Sec</span></div>
+                <div>Status: <span class="text-emerald-400 font-semibold">Active & Certified</span></div>
+              </div>
+            </div>
+
+            <div class="pt-5 mt-5 border-t border-slate-800">
+              <div class="w-full py-2.5 rounded-xl text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-center font-mono">
+                ✓ Verified Credential
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Continuous Learning Callout -->
+        <div class="mt-8 p-5 rounded-2xl bg-slate-900/50 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+            <div>
+              <span class="text-xs font-mono text-cyan-300 font-semibold">CURRENTLY EXPLORING & EXPANDING:</span>
+              <p class="text-sm text-slate-200 mt-0.5">Google Agent Development Kit (ADK) · Autonomous AI Agent Architectures · GCP Machine Learning Engineer Specialization</p>
+            </div>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 w-fit shrink-0">
+            Lifelong Learner
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TECHNICAL SKILLS MATRIX (Comprehensive & Categorized)
+         ==================================================================== -->
+    <section id="skills" class="py-20 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="text-xs uppercase font-mono tracking-widest text-cyan-400">Engineering Arsenal</span>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight mt-1">
+            Technical Skills Matrix
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-2">
+            Multi-paradigm languages, cloud-native infrastructure, AI agents, and enterprise data technologies.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- Category 1: AI & Automation -->
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover-card-lift">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">
+                ⚡
+              </div>
+              <h3 class="font-display font-bold text-lg text-white">AI & Automation</h3>
+            </div>
+            <div class="space-y-2.5 text-xs">
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">LangGraph & Agentic Workflows</span>
+                <span class="text-cyan-400 font-mono">Expert</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">LLM Prompt & Reflection Chains</span>
+                <span class="text-cyan-400 font-mono">Advanced</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">GitHub Copilot & AI Velocity</span>
+                <span class="text-cyan-400 font-mono">Champion</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Selenium & Headless Automation</span>
+                <span class="text-cyan-400 font-mono">Expert</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Google Document AI / OCR</span>
+                <span class="text-cyan-400 font-mono">Proficient</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Cloud & DevOps -->
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover-card-lift">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold">
+                ☁️
+              </div>
+              <h3 class="font-display font-bold text-lg text-white">Cloud & DevOps</h3>
+            </div>
+            <div class="space-y-2.5 text-xs">
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">GCP (Certified Cloud Architect)</span>
+                <span class="text-purple-400 font-mono">Certified</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">AWS (Solutions Architect Assoc)</span>
+                <span class="text-purple-400 font-mono">Certified</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Docker & Containerization</span>
+                <span class="text-purple-400 font-mono">Expert</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">GitHub Actions & Jenkins CI/CD</span>
+                <span class="text-purple-400 font-mono">Expert</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Cloud Functions & Serverless</span>
+                <span class="text-purple-400 font-mono">Advanced</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Backend & Architecture -->
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover-card-lift">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+                ⚙️
+              </div>
+              <h3 class="font-display font-bold text-lg text-white">Back-End & Microservices</h3>
+            </div>
+            <div class="space-y-2.5 text-xs">
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Python 3+</span>
+                <span class="text-emerald-400 font-mono">Expert</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Java 17+ & Spring Boot</span>
+                <span class="text-emerald-400 font-mono">Expert</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">REST API Design & Hexagonal Arch</span>
+                <span class="text-emerald-400 font-mono">Expert</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Node.js / Express</span>
+                <span class="text-emerald-400 font-mono">Advanced</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Event-Driven Architecture</span>
+                <span class="text-emerald-400 font-mono">Advanced</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 4: Front-End Engineering -->
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover-card-lift">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">
+                💻
+              </div>
+              <h3 class="font-display font-bold text-lg text-white">Front-End Engineering</h3>
+            </div>
+            <div class="space-y-2.5 text-xs">
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Angular 19 & RxJS</span>
+                <span class="text-blue-400 font-mono">Expert</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">TypeScript & JavaScript (ESNext)</span>
+                <span class="text-blue-400 font-mono">Expert</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">React & Modern Hooks</span>
+                <span class="text-blue-400 font-mono">Advanced</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Vue.js 3</span>
+                <span class="text-blue-400 font-mono">Advanced</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Tailwind CSS & Responsive UI</span>
+                <span class="text-blue-400 font-mono">Expert</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 5: Data & Databases -->
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover-card-lift">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
+                🗄️
+              </div>
+              <h3 class="font-display font-bold text-lg text-white">Data & Databases</h3>
+            </div>
+            <div class="space-y-2.5 text-xs">
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Google BigQuery (SQL / NoSQL)</span>
+                <span class="text-amber-400 font-mono">Expert</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">PostgreSQL & Index Optimization</span>
+                <span class="text-amber-400 font-mono">Expert</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Oracle & Complex PL/SQL</span>
+                <span class="text-amber-400 font-mono">Expert</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">MSSQL Server</span>
+                <span class="text-amber-400 font-mono">Advanced</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">ETL Pipeline Validation</span>
+                <span class="text-amber-400 font-mono">Expert</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 6: Security & Leadership -->
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover-card-lift">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold">
+                🛡️
+              </div>
+              <h3 class="font-display font-bold text-lg text-white">Security & Leadership</h3>
+            </div>
+            <div class="space-y-2.5 text-xs">
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">OAuth 2.0 & JWT Architecture</span>
+                <span class="text-rose-400 font-mono">Expert</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">ISC2 Cybersecurity Certified</span>
+                <span class="text-rose-400 font-mono">Certified</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Offshore Tech Lead & Mentoring</span>
+                <span class="text-rose-400 font-mono">Proven</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Code Reviews & Architecture Standards</span>
+                <span class="text-rose-400 font-mono">Leader</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <span class="text-slate-200 font-medium">Agile / Scrum & Jira Documentation</span>
+                <span class="text-rose-400 font-mono">Expert</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         RECRUITER CONVERSION & CONTACT HUB
+         ==================================================================== -->
+    <section id="contact" class="py-24 relative border-t border-slate-800 bg-gradient-to-b from-slate-950/60 to-slate-950">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="relative rounded-3xl bg-slate-900/90 border border-cyan-500/30 p-8 sm:p-12 overflow-hidden shadow-2xl backdrop-blur-2xl">
+          
+          <!-- Background Glow -->
+          <div class="absolute -top-24 -right-24 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="relative z-10 text-center max-w-3xl mx-auto">
+            
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-semibold text-cyan-300 mb-6">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              Open to New Opportunities · Let's Connect
+            </div>
+
+            <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight">
+              Ready to Accelerate Your Engineering Organization?
+            </h2>
+
+            <p class="text-slate-300 text-sm sm:text-base mt-4 leading-relaxed max-w-2xl mx-auto">
+              Whether you are hiring for a <strong class="text-white">Senior Software Engineer</strong>, <strong class="text-white">Staff Engineer</strong>, or <strong class="text-white">AI Solutions Architect</strong>, I bring battle-tested enterprise expertise, dual-cloud credentials, and autonomous AI automation systems that drive measurable ROI.
+            </p>
+
+            <!-- Action Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+              
+              <!-- Action 1: Email -->
+              <a href="mailto:sanchez04d@outlook.com?subject=Job%20Opportunity%20-%20Senior%20Software%20Engineer&body=Hi%20Daniel,%0A%0AWe%20reviewed%20your%20portfolio%20and%20would%20love%20to%20connect%20regarding%20an%20opportunity%20at%20[Company]." class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80 transition-all text-center flex flex-col items-center justify-center gap-2 group">
+                <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div class="text-xs font-semibold text-white">Email Daniel</div>
+                <div class="text-[11px] text-slate-400 font-mono">sanchez04d@outlook.com</div>
+              </a>
+
+              <!-- Action 2: LinkedIn -->
+              <a href="https://linkedin.com/in/dan7spirit" target="_blank" rel="noopener" class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-blue-500/50 hover:bg-slate-800/80 transition-all text-center flex flex-col items-center justify-center gap-2 group">
+                <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                </div>
+                <div class="text-xs font-semibold text-white">Connect LinkedIn</div>
+                <div class="text-[11px] text-slate-400 font-mono">/in/dan7spirit</div>
+              </a>
+
+              <!-- Action 3: Phone / WhatsApp -->
+              <a href="https://wa.me/50661800125" target="_blank" rel="noopener" class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 hover:bg-slate-800/80 transition-all text-center flex flex-col items-center justify-center gap-2 group">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div class="text-xs font-semibold text-white">Call / WhatsApp</div>
+                <div class="text-[11px] text-slate-400 font-mono">+506 61800125</div>
+              </a>
+
+              <!-- Action 4: Resume Download -->
+              <a href="assets/Daniel_Sanchez_Resume.docx" download="Daniel_Sanchez_Resume.docx" class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-purple-500/50 hover:bg-slate-800/80 transition-all text-center flex flex-col items-center justify-center gap-2 group">
+                <div class="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div class="text-xs font-semibold text-white">Download Resume</div>
+                <div class="text-[11px] text-slate-400 font-mono">Word .DOCX</div>
+              </a>
+
+            </div>
+
+            <!-- Quick copy buttons bar -->
+            <div class="mt-8 pt-6 border-t border-slate-800 flex flex-wrap justify-center items-center gap-3">
+              <button class="copy-btn px-4 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors flex items-center gap-2" data-copy="sanchez04d@outlook.com">
+                <span>Copy Email</span>
+              </button>
+              <button class="copy-btn px-4 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors" data-copy="+50661800125">
+                <span>Copy Phone</span>
+              </button>
+              <button class="open-resume-btn px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-md">
+                <span>Print ATS-Ready PDF Resume</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-slate-800/80 bg-slate-950 text-slate-400 text-xs font-mono">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="text-white font-bold font-display">Daniel Sánchez Sánchez</span>
+        <span>•</span>
+        <span>San José, Costa Rica</span>
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <a href="#hero" class="hover:text-cyan-400 transition-colors">Back to Top ↑</a>
+        <a href="assets/Daniel_Sanchez_Resume.docx" class="hover:text-cyan-400 transition-colors">Resume .DOCX</a>
+        <a href="assets/Google_Cloud_Architect_Certificate.pdf" target="_blank" class="hover:text-cyan-400 transition-colors">GCP Certificate PDF</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       CASE STUDY DETAIL MODAL (Deep Dive)
+       ==================================================================== -->
+  <div id="case-study-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden">
+    <div class="relative w-full max-w-3xl max-h-[90vh] rounded-2xl bg-slate-900 border border-slate-700/80 shadow-2xl overflow-y-auto p-6 sm:p-8">
+      
+      <!-- Close Button -->
+      <button class="close-modal-btn absolute top-5 right-5 p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div>
+        <div class="inline-block px-2.5 py-0.5 rounded text-xs font-mono font-semibold bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 mb-2" id="modal-project-meta">
+          Equifax · Software Architecture
+        </div>
+        <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-tight" id="modal-project-title">
+          Project Architecture Deep-Dive
+        </h3>
+        <p class="text-xs text-emerald-400 font-mono mt-1" id="modal-project-impact">
+          640 man-hours saved/month
+        </p>
+
+        <!-- Tech Badges -->
+        <div class="flex flex-wrap gap-1.5 mt-4" id="modal-project-tech"></div>
+
+        <!-- Overview -->
+        <div class="mt-6">
+          <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400">System Overview</h4>
+          <p class="text-sm text-slate-300 mt-2 leading-relaxed" id="modal-project-overview"></p>
+        </div>
+
+        <!-- Architecture Breakdown -->
+        <div class="mt-6">
+          <h4 class="text-xs font-mono uppercase tracking-wider text-cyan-400">Architectural Implementation</h4>
+          <ul class="mt-3 space-y-2.5" id="modal-project-arch"></ul>
+        </div>
+
+        <!-- Measurable Business Results -->
+        <div class="mt-6">
+          <h4 class="text-xs font-mono uppercase tracking-wider text-emerald-400">Measurable Outcomes</h4>
+          <ul class="mt-3 space-y-2.5" id="modal-project-results"></ul>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-slate-800 flex justify-end">
+          <button class="close-modal-btn px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition-colors">
+            Close Case Study
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       INTERACTIVE ATS-OPTIMIZED PRINTABLE RESUME MODAL
+       ==================================================================== -->
+  <div id="resume-modal" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/85 backdrop-blur-md hidden">
+    <div class="relative w-full max-w-4xl max-h-[92vh] rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl flex flex-col overflow-hidden">
+      
+      <!-- Top Action Bar (No Print) -->
+      <div class="no-print flex items-center justify-between px-6 py-4 bg-slate-950 border-b border-slate-800 shrink-0">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <span class="text-sm font-semibold text-white">Executive Technical Resume</span>
+          <span class="text-xs text-slate-400 font-mono hidden sm:inline">(ATS-Optimized & Printable)</span>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <button id="print-resume-btn" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-cyan-500 text-slate-950 hover:bg-cyan-400 transition-colors flex items-center gap-1.5 shadow-sm">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            <span>Print / Save PDF</span>
+          </button>
+          
+          <a href="assets/Daniel_Sanchez_Resume.docx" download class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors">
+            Download .DOCX
+          </a>
+
+          <button class="close-modal-btn p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable Resume Paper Container -->
+      <div class="overflow-y-auto p-6 sm:p-10 bg-white text-slate-900 font-sans resume-printable">
+        
+        <!-- Header -->
+        <div class="border-b-2 border-slate-800 pb-4 mb-6">
+          <h1 class="text-3xl font-extrabold tracking-tight text-slate-950 font-display">Daniel Sánchez Sánchez</h1>
+          <p class="text-lg font-semibold text-cyan-800 mt-0.5">Software Engineer · AI & Automation Specialist</p>
+          <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600 mt-2 font-mono">
+            <span>📞 +506 61800125</span>
+            <span>✉ sanchez04d@outlook.com</span>
+            <span>🔗 <a href="https://linkedin.com/in/dan7spirit" class="text-blue-700 underline">linkedin.com/in/dan7spirit</a></span>
+            <span>🐙 <a href="https://github.com/dan7spirit" class="text-blue-700 underline">github.com/dan7spirit</a></span>
+            <span>📍 San José, Costa Rica</span>
+          </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="mb-6">
+          <h2 class="text-xs uppercase font-bold tracking-widest text-slate-800 border-b border-slate-300 pb-1 mb-2 font-mono">
+            PROFESSIONAL SUMMARY
+          </h2>
+          <p class="text-xs leading-relaxed text-slate-700">
+            Software Engineer with <strong>5+ years of experience</strong> architecting end-to-end full-stack and AI-driven solutions for enterprise environments. Proficient in <strong>Python</strong>, <strong>Java</strong>, <strong>Angular</strong>, <strong>Spring Boot</strong>, with hands-on expertise across <strong>GCP (Professional Cloud Architect)</strong> and <strong>AWS (Certified Solutions Architect)</strong> platforms. Experienced in REST API design, microservices, and event-driven architectures. Proven track record leading cross-functional teams, mentoring junior engineers, and delivering measurable business outcomes—including <strong>640 man-hours saved per month</strong> through intelligent automation. Currently developing agentic AI solutions with <strong>LangGraph</strong>; passionate about applying emerging AI/ML technologies to solve complex operational challenges.
+          </p>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="mb-6">
+          <h2 class="text-xs uppercase font-bold tracking-widest text-slate-800 border-b border-slate-300 pb-1 mb-2 font-mono">
+            CORE TECHNICAL SKILLS
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 text-xs text-slate-800">
+            <div><strong>Front-End:</strong> React, Angular 19, TypeScript, JavaScript, Vue.js, Tailwind CSS</div>
+            <div><strong>Back-End:</strong> Python 3+ (Expert), Java 17+, Spring Boot, Node.js, REST APIs, Microservices</div>
+            <div><strong>AI & Automation:</strong> LangGraph, Agentic AI, GitHub Copilot, Selenium, ETL Pipelines, LLMs</div>
+            <div><strong>Cloud & DevOps:</strong> GCP (Certified Cloud Architect), AWS (Certified Solutions Architect), Docker, CI/CD</div>
+            <div><strong>Data & Databases:</strong> BigQuery, PostgreSQL, Oracle, MSSQL, PL/SQL, NoSQL, Data Validation</div>
+            <div><strong>Auth & Security:</strong> OAuth 2.0, JWT, ISC2 Cybersecurity Certified, Secure Pipelines</div>
+          </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="mb-6">
+          <h2 class="text-xs uppercase font-bold tracking-widest text-slate-800 border-b border-slate-300 pb-1 mb-3 font-mono">
+            PROFESSIONAL EXPERIENCE
+          </h2>
+
+          <div>
+            <div class="flex justify-between items-baseline">
+              <span class="text-sm font-bold text-slate-900">Software Engineer · AI & Automation Specialist</span>
+              <span class="text-xs font-semibold font-mono text-slate-700">Feb 2020 – Present</span>
+            </div>
+            <div class="text-xs font-semibold text-cyan-800 mb-2">Equifax | San José, Costa Rica</div>
+
+            <ul class="list-disc list-outside ml-4 space-y-1.5 text-xs text-slate-700 leading-relaxed">
+              <li><strong>Architected an AI-driven agentic automation platform using LangGraph</strong>, migrating a legacy E2E test framework to an agent-orchestrated solution—reducing regression cycles from 3 weeks to 1 week and <strong>saving 640 man-hours per month</strong>.</li>
+              <li><strong>Built and delivered a full-stack internal UI application</strong> using Angular 19 and Spring Boot with RESTful APIs, automating business processes for internal clients and reducing manual workload by <strong>40 hours per month</strong>.</li>
+              <li><strong>Designed and deployed an ETL validation platform</strong> integrating BigQuery (NoSQL/SQL hybrid), PostgreSQL, Oracle, and MSSQL data sources, ensuring data integrity across enterprise data lake migrations.</li>
+              <li><strong>Developed a cloud-native employee insights solution</strong> leveraging Python, GCP (Cloud Scheduler, Cloud Functions, BigQuery), Google Apps Script, Vue.js, and Looker—delivering actionable workforce analytics to global leadership.</li>
+              <li><strong>Architected and maintained CI/CD pipelines</strong> using GitHub Actions and Jenkins, integrating security protocols, automated testing, and OAuth-based authentication to streamline production deployments.</li>
+              <li><strong>Leveraged GitHub Copilot</strong> to accelerate development velocity on automation projects, championing AI tool adoption across the engineering team.</li>
+              <li><strong>Led and mentored offshore development teams</strong> across two major automation projects, overseeing solution architecture, conducting code reviews, and coaching junior engineers on best practices and design patterns.</li>
+              <li><strong>Performed complex PL/SQL database validation and management</strong> across multi-environment landscapes, ensuring reliability for high-quality reporting systems.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="mb-6">
+          <h2 class="text-xs uppercase font-bold tracking-widest text-slate-800 border-b border-slate-300 pb-1 mb-2 font-mono">
+            CERTIFICATIONS & CONTINUOUS LEARNING
+          </h2>
+          <div class="space-y-1 text-xs text-slate-800">
+            <div>✓ <strong>GCP Certified Professional – Cloud Architect</strong> — Google Cloud (Series ID: 98085, Valid to Sep 2027)</div>
+            <div>✓ <strong>AWS Certified Solutions Architect – Associate</strong> — Amazon Web Services</div>
+            <div>✓ <strong>ISC2 Certified in Cybersecurity (CC)</strong> — ISC2</div>
+            <div class="text-slate-600 italic">Currently exploring: Google Agent Development Kit (ADK), multi-agent frameworks, GCP ML Engineer.</div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div>
+          <h2 class="text-xs uppercase font-bold tracking-widest text-slate-800 border-b border-slate-300 pb-1 mb-2 font-mono">
+            EDUCATION
+          </h2>
+          <div class="flex justify-between items-baseline text-xs">
+            <div>
+              <strong class="text-slate-900">Bachelor's Degree in Computer Science & Informatics</strong>
+              <div class="text-slate-600">Tecnológico de Costa Rica (TEC)</div>
+            </div>
+            <span class="font-mono text-slate-700">2016 – 2020</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/ai-agent.js"></script>
+  <script src="js/agent-visualizer.js"></script>
+</body>
+</html>
